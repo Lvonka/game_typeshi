@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://djojmp25h3xxu"]
+
+[ext_resource type="PackedScene" uid="uid://c1n05yocn63hc" path="res://scenes/world_environment.tscn" id="1_kkmud"]
+[ext_resource type="PackedScene" uid="uid://nc0dbouqt2gr" path="res://scenes/player.tscn" id="2_c7fs3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jq8tk"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_3xd07"]
+
+[node name="TestLevel" type="Node3D" unique_id=321828969]
+
+[node name="Geometry" type="Node3D" parent="." unique_id=17897500]
+
+[node name="Area3D" type="Area3D" parent="Geometry" unique_id=533771380]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Area3D" unique_id=1707183234]
+transform = Transform3D(21.875265, 0, 0, 0, 0.32249272, 0, 0, 0, -18.542252, 0, -0.16211566, 0)
+shape = SubResource("BoxShape3D_jq8tk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Geometry/Area3D" unique_id=709456969]
+transform = Transform3D(22.126488, 0, 0, 0, -8.1538764e-07, 0.9395582, 0, -18.653893, -4.106939e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_3xd07")
+
+[node name="WorldEnvironment" parent="Geometry" unique_id=377556894 instance=ExtResource("1_kkmud")]
+
+[node name="PlayerController" parent="Geometry" unique_id=300487394 instance=ExtResource("2_c7fs3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0977029, 0)
