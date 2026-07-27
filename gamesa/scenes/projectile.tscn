@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ceilon3x607d6"]
+
+[ext_resource type="Script" uid="uid://diq8q0iw2uld0" path="res://assets/weapons/scripts/projectile.gd" id="1_a85iw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6fhyq"]
+albedo_color = Color(0, 0.7272288, 0.79273814, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jq8tk"]
+material = SubResource("StandardMaterial3D_6fhyq")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qxf0c"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[node name="Projectile" type="Area3D" unique_id=327044283]
+script = ExtResource("1_a85iw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=978057985]
+transform = Transform3D(0.13317436, 0, 0, 0, 0.13298705, 0, 0, 0, 0.7093712, 0, 0, 0)
+mesh = SubResource("BoxMesh_jq8tk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1844750624]
+transform = Transform3D(0.13317436, 0, 0, 0, 0.13298705, 0, 0, 0, 0.7093712, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_qxf0c")

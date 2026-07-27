@@ -1,5 +1,6 @@
 class_name WeaponController extends Node
 
+@export var camera : Camera3D
 @export var current_weapon : Weapon
 @export var weapon_model_parent : Node3D
 @export var weapon_state_chart : StateChart
@@ -29,3 +30,24 @@ func fire_weapon() -> void:
 		current_ammo -= 1
 		print("Ammo: ", current_ammo)
 		
+		_spawn_projectile()
+		
+func _spawn_projectile() -> void:
+	if not current_weapon.projectile_scene:
+		print("No projectile scene assigned")
+		return
+	
+	if not camera:
+		print("Camera not assigned")
+		return
+		
+	var projectile = current_weapon.projectile_scene.instantiate() as Projectile
+	get_tree().current_scene.add_child(projectile)
+	
+	projectile.global_position = camera.global_position
+	
+	var forward = -camera.global_transform.basis.z
+	var velocity = forward * current_weapon.projectile_speed
+	projectile.look_at(projectile.global_position + forward, Vector3.UP)
+	
+	projectile.setup(velocity, current_weapon.damage)
