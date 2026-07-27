@@ -27,3 +27,7 @@ func _physics_process(delta: float) -> void:
 
 func update_rotation(rotation_input) -> void:
 	global_transform.basis = Basis.from_euler(rotation_input)
+	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("dev_exit"):
+		get_tree().quit()

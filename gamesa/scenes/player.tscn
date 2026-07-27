@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://bbs0t8xxymof" path="res://assets/scripts/mouse_capture.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://q02t368dik1m" path="res://assets/scripts/player_controller.gd" id="1_i3pqv"]
 [ext_resource type="Script" uid="uid://bvwk8frlmf2sl" path="res://assets/scripts/camera_controller.gd" id="2_i3pqv"]
+[ext_resource type="Script" uid="uid://b2ndk7852num1" path="res://assets/weapons/scripts/weapon_controller.gd" id="4_qlg0r"]
+[ext_resource type="Resource" uid="uid://eohcxg6lb1eh" path="res://assets/weapons/resources/pistol.tres" id="5_tuyoq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3xd07"]
 
@@ -29,3 +31,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56583214, 0)
 
 [node name="MouseCapture" type="Node" parent="Components" unique_id=10699514]
 script = ExtResource("1_4flbx")
+
+[node name="WeaponController" type="Node" parent="Components" unique_id=1849687983 node_paths=PackedStringArray("weapon_model_parent")]
+script = ExtResource("4_qlg0r")
+current_weapon = ExtResource("5_tuyoq")
+weapon_model_parent = NodePath("../../CameraController/Camera3D")
