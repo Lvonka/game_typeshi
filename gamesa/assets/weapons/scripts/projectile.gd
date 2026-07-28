@@ -11,6 +11,11 @@ func _physics_process(delta: float) -> void:
 	var collider = get_collider()
 	if is_colliding():
 		global_position = get_collision_point()
+		
+		var health_component = collider.get_node_or_null("HealthComponent")
+		if health_component and health_component.has_method("take_damage"):
+			health_component.take_damage(damage, self)
+		
 		set_physics_process(false)
 		print("HIT")
 		cleanup()

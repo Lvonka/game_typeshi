@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://ftl63uja3pt0" path="res://assets/weapons/scripts/states/weapon_idle_state.gd" id="11_f1ej7"]
 [ext_resource type="Script" uid="uid://dysl2te1dv8m2" path="res://assets/weapons/scripts/states/weapon_firing_state.gd" id="12_oprun"]
 [ext_resource type="Script" uid="uid://bnu7t6ligglxq" path="res://assets/weapons/scripts/states/weapon_empty_state.gd" id="13_a8ls1"]
+[ext_resource type="Script" uid="uid://jlanh5bi0u70" path="res://assets/scripts/health_component.gd" id="14_f1ej7"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3xd07"]
 
@@ -106,6 +107,10 @@ script = ExtResource("12_oprun")
 
 [node name="EmptyState" type="Node" parent="WeaponStateMachine" unique_id=872894468]
 script = ExtResource("13_a8ls1")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=287767417]
+script = ExtResource("14_f1ej7")
+metadata/_custom_type_script = "uid://jlanh5bi0u70"
 
 [connection signal="state_processing" from="WeaponStateChart/Root/IdleState" to="WeaponStateMachine/IdleState" method="_on_idle_state_state_processing"]
 [connection signal="state_entered" from="WeaponStateChart/Root/FiringState" to="WeaponStateMachine/FiringState" method="_on_firing_state_state_entered"]

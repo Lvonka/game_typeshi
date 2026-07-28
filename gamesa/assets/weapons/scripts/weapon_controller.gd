@@ -52,3 +52,9 @@ func _spawn_projectile() -> void:
 	
 	#projectile.setup(velocity, current_weapon.damage)
 	projectile.setup(current_weapon.projectile_speed, current_weapon.damage)
+	
+func _apply_damage_to_target(target : Node3D) -> void:
+	var health_component = target.get_node_or_null("HealthComponent")
+	
+	if health_component and health_component.has_method("dake_damage"):
+		health_component.take_damage(current_weapon.damage, get_parent())
