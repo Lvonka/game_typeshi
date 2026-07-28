@@ -43,11 +43,12 @@ func _spawn_projectile() -> void:
 		
 	var projectile = current_weapon.projectile_scene.instantiate() as Projectile
 	get_tree().current_scene.add_child(projectile)
+	projectile.global_transform = camera.global_transform
 	
-	projectile.global_position = camera.global_position
 	
-	var forward = -camera.global_transform.basis.z
-	var velocity = forward * current_weapon.projectile_speed
-	projectile.look_at(projectile.global_position + forward, Vector3.UP)
+	#projectile.global_position = camera.global_position
 	
-	projectile.setup(velocity, current_weapon.damage)
+	#projectile.global_transform.basis = camera.global_transform.basis
+	
+	#projectile.setup(velocity, current_weapon.damage)
+	projectile.setup(current_weapon.projectile_speed, current_weapon.damage)
