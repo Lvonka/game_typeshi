@@ -2,9 +2,14 @@ class_name PlayerController extends CharacterBody3D
 
 var _input_dir : Vector2 = Vector2.ZERO
 var _movement_velocity : Vector3 = Vector3.ZERO
-var speed : float = 3.0
+var speed : float = 7.0
 var acceleration : float = 0.2
-var deceleration : float = 0.5
+var deceleration : float = 0.6
+
+@onready var camera = $CameraController/Camera3D
+
+const base_fov : float = 75.0
+const fov_change : float = 1.5
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -22,6 +27,11 @@ func _physics_process(delta: float) -> void:
 	_movement_velocity = Vector3(current_velocity.x, velocity.y, current_velocity.y)
 	
 	velocity = _movement_velocity
+	
+	# FOV
+	var velocity_clamped = clamp(velocity.length(), 0.5, speed * 2)
+	var target_fov = base_fov + fov_change * velocity_clamped
+	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
 	move_and_slide()
 

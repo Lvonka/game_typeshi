@@ -1,4 +1,4 @@
-class_name WeaponController extends Node
+class_name WeaponControllerRight extends Node
 
 @export var camera : Camera3D
 @export var current_weapon : Weapon

@@ -1,11 +1,11 @@
-extends WeaponState
+extends WeaponStateRight
 
 func _on_idle_state_state_processing(delta: float) -> void:
 	if not weapon_controller:
 		return
 		
 	if Input.is_action_just_pressed("shoot_right") and weapon_controller.can_fire():
-		weapon_controller.weapon_state_chart.send_event("onFiring")
+		weapon_controller.weapon_state_chart.send_event("onFiringRight")
 		
 	if weapon_controller.current_ammo <= 0:
-		weapon_controller.weapon_state_chart.send_event("onEmpty")
+		weapon_controller.weapon_state_chart.send_event("onEmptyRight")
