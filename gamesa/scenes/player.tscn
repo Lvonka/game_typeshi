@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://2p547hsumk66" path="res://assets/weapons/scripts/left/states_left/weapon_idle_state_left.gd" id="17_4r5pv"]
 [ext_resource type="Script" uid="uid://bxj8bapllree0" path="res://assets/weapons/scripts/left/states_left/weapon_firing_state_left.gd" id="18_60mlk"]
 [ext_resource type="Script" uid="uid://yteo0b1qe5bw" path="res://assets/weapons/scripts/left/states_left/weapon_empty_state_left.gd" id="19_i4ail"]
+[ext_resource type="PackedScene" uid="uid://vlbg4c452jw8" path="res://scenes/crosshair.tscn" id="20_60mlk"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3xd07"]
 
@@ -39,7 +40,7 @@ player_controller = NodePath("..")
 component_mouse_capture = NodePath("../Components/MouseCapture")
 
 [node name="Camera3D" type="Camera3D" parent="CameraController" unique_id=1870110771]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56583214, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="CameraController/Camera3D" unique_id=1685965453]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
@@ -177,6 +178,8 @@ to = NodePath("../EmptyStateLeft")
 event = &"onEmptyLeft"
 delay_in_seconds = "0.0"
 metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
+
+[node name="CanvasLayer" parent="." unique_id=218729176 instance=ExtResource("20_60mlk")]
 
 [connection signal="state_processing" from="WeaponStateChartRight/RootRight/IdleStateRight" to="WeaponStateMachineRight/IdleStateRight" method="_on_idle_state_state_processing"]
 [connection signal="state_entered" from="WeaponStateChartRight/RootRight/FiringStateRight" to="WeaponStateMachineRight/FiringStateRight" method="_on_firing_state_state_entered"]
